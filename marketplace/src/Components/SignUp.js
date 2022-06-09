@@ -1,18 +1,33 @@
 import React from "react";
 import "../App.css";
 import { SignUpForm } from "./SignUpForm";
+import img1 from "../Assets/pexels-karolina-grabowska.png"
+import cross from "../Assets/cross.png"
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {  
+    let navigate = useNavigate(); 
+    const routeChange = () =>{  
+        let path = `/`; 
+        navigate(path);
+    }
     return  (
-        <div className="container mt-4 ">
-            <div className="row justify-content-center">
-                <div className="col-sm-6">
+        <div>
+            <div className="login-container">
+                <div className="img-container">
+                    <img className="resize" src={img1} alt="img"/>
+                </div>
+                <div className="form-container">
                     <SignUpForm/>
+                    <h4 className="link-label2"> 
+                        Back to 
+                        <a className="link" href={"/SignIn"}> login</a>
+                    </h4>
                 </div>
-                <div className="col-md-7 my-auto">
-                    <img className="img-fluid w-100" /*src={SomeImg}*/ alt=""/>
-                </div>
-            </div>
+                <button className="cross" onClick={routeChange}>
+                    <img alt="X" type="image" src={cross}/>
+                </button> 
+            </div> 
         </div>
     )
 }

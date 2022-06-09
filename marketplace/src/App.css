@@ -1,30 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root {
+  --primary: #FFFFFF;
+  --imortant: #3BBEB6;
+  --secondary: #E5E5E5;
+  --textColor: #A8ACB8;
+}
 
 .App {
-  padding: 0;
-  margin: 0;
   text-align: center;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  }
-
-label {
-  font-size: .7rem;
+  font-family: 'Almarai', sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: var(--primary);
 }
 
 input.form-control, input.form-control:focus {
   background: #F0F0FF;
 }
 
+.resize{
+  width: 32.2vw;
+  height: auto;
+}
+
+.resize2{
+  width: 49vw;
+  height: auto;
+}
+
 .error {
   position: absolute;
   color: red;
-  font-size: .6rem;
+  font-size: .7rem;
+  text-indent: 2.7vw;
 }
 
 .navbar{
+  margin: 0;
+  padding: 0;
   width: 100vw;
+  height: 68px;
+  display: flex;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+}
+
+li{
+  list-style-type: none;
+}
+
+.login-container{
+  display: flex;
+  padding: 30px;
+  align-items: center;
+}
+
+.flex{
+  display: flex;
+  justify-content: center;
+}
+
+.navbtn{
+  padding: 20px;
+  text-decoration: none;
+}
+
+.btn{
+  width: 100%;
+  border-radius: 3.5vh;
+  height: 6.5vh;
+  margin-top: 4vh;
+  font-size: 1.2rem;
+  border: none;
+  background: var(--imortant);
+  color: var(--primary);
+}
+
+.search{
+  text-indent: 1.2vw;
+  width: 32vw;
+  height: 3vh;
+  border-radius: 2vh;
+  background: var(--secondary);
+  border: none;
+}
+
+.form{
+  width: 32vw;
+  padding-left: 16vw;
+  padding-top: 5vh;
+}
+
+
+.login-form{
+  width: 32vw;
+  padding-left: 9vw;
+  padding-top: 16vh;
+}
+
+.box1{
+  display: flex;
+  justify-content: space-between;
+}
+
+.spaced{
+  width: 15vw !important;
+}
+
+.inputField{
+  text-indent: 2.5vw;
+  width: 100%;
+  font-size: 16px;
+  height: 5.5vh;
+  margin-top: 2.5vh;
+  border-radius: 3vh;
+  border: none;
+  background-color: var(--secondary);
+}
+
+.link{
+  color: var(--imortant);
+  text-decoration: none;
+}
+
+.link:hover{
+  text-decoration: underline;
+}
+
+.cross{
+  padding-top: 5px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  border-radius: 15px;
+  border: 0;
+  background-color: var(--primary);
+}
+
+.cross:hover{
+  background-color: var(--secondary);
+}
+
+.label{
+  text-align: left;
+}
+
+.label2{
+  text-align: left;
+  color: var(--textColor);
+  font-weight: 100;
+}
+
+.link-label, .link-label2{
+  color: var(--textColor);
+  font-weight: 100;
+  text-align: center;
+}
+
+.link-label{
+  padding-left: 8vw;
+  margin-top: 13vw;
+}
+
+.link-label2{
+  padding-left: 15vw;
+  margin-top: 10vw;
 }

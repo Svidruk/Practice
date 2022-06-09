@@ -35,15 +35,18 @@ export const SignUpForm = () => {
         console.log(values)
       }}>
       {formik => (
-        <div>
-          <h1 className="my-4 font-weight-bold .display-4">Sign Up</h1>
+        <div className='form'>
           <Form>
-            <TextField label="First Name" name="firstName" type="text" />
-            <TextField label="last Name" name="lastName" type="text" />
-            <TextField label="Email" name="email" type="email" />
-            <TextField label="password" name="password" type="password" />
-            <TextField label="Confirm Password" name="confirmPassword" type="password" />
-            <button className="btn btn-primary mt-3" type="submit">Register</button>
+            <h1 className='label'>Sign Up</h1>
+            <h4 className='label2'>Just a few quick steps to create your account</h4>
+              <div className='box1'>
+                <TextField className="inputField spaced" placeholder="First Name" name="firstName" type="text" />
+                <TextField className="inputField spaced" placeholder="Last Name" name="lastName" type="text" />
+              </div>
+            <TextField className="inputField" placeholder="Email" name="email" type="email" />
+            <TextField className="inputField" placeholder="Password" name="password" type="password" />
+            <TextField className="inputField" placeholder="Confirm Password" name="confirmPassword" type="password" />
+            <button className="btn" type="submit">Next</button>
           </Form>
         </div>
       )}

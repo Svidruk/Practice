@@ -1,22 +1,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { SearchBar } from './SearchBar';
 
 export const Navbar = () => {  
     return  <div>
-        <nav className='navbar navbar-expand-sm bg-light navbar-dark'>
-            <ul className='navbar-nav position-relative'>
-                <li className='nav-item- m-1'>
-                    <NavLink className="btn btn-light btn-outline-primary" to="/">Home</NavLink>
+        <div className='navbar-container'>
+            <ul className='navbar'>
+                <li>
+                    <NavLink className="navbtn" to="/">Home</NavLink>
                 </li>
-
-                <li className='nav-item- m-1'>
-                    <NavLink className="btn btn-light btn-outline-primary" to="/SignIn">Sign In</NavLink>
+                <li> 
+                    <SearchBar/>
                 </li>
-
-                <li className='nav-item- m-1'>
-                    <NavLink className="btn btn-light btn-outline-primary" to="/SignUp">Sign Up</NavLink>
+                <li>
+                    <NavLink className="navbtn" to="/SignIn">Sign In</NavLink>
+                </li>
+                <li>
+                    <NavLink className="navbtn" to="/SignUp">Sign Up</NavLink>
                 </li>
             </ul>
-        </nav>
+        </div>
     </div>
 }
