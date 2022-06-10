@@ -29,7 +29,7 @@ export const SignInForm = () => {
             <h4 className='label2'>Enter information below for login</h4>
             <TextField className="inputField" placeholder="Email" name="email" type="email" />
             <TextField className="inputField" placeholder="password" name="password" type="password" />
-            <button className="btn" type="submit">Next</button>
+            <button className="btn" type="submit">Login</button>
           </Form>
         </div>
       )}

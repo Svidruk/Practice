@@ -82,6 +82,12 @@ li{
   color: var(--primary);
 }
 
+.btn:active{
+  transform: scale(0.98);
+  background:#39938d;
+}
+
+
 .search{
   text-indent: 1.2vw;
   width: 32vw;
@@ -120,6 +126,7 @@ li{
   height: 5.5vh;
   margin-top: 2.5vh;
   border-radius: 3vh;
+  outline-width: 0;
   border: none;
   background-color: var(--secondary);
 }
@@ -164,11 +171,11 @@ li{
 }
 
 .link-label{
-  padding-left: 8vw;
+  padding-left: 8.5vw;
   margin-top: 13vw;
 }
 
 .link-label2{
-  padding-left: 15vw;
+  padding-left: 15.5vw;
   margin-top: 10vw;
 }
