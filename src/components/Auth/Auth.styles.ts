@@ -2,21 +2,23 @@ import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles({
   container: {
-    display: 'flex',
+    display: 'grid',
     padding: 36,
-    alignItems: 'center',
     position: 'relative',
+    gridTemplateColumns: '1fr 1fr',
   },
   closeBtn: {
     position: 'absolute',
     right: 40,
     top: 40,
+    cursor: 'pointer',
   },
   img: {
-    display: 'block',
-    width: 743,
+    maxWidth: 743,
+    height: 670,
+    objectFit: 'fill',
   },
-  formContainer: {
-    padding: '0px 170px',
+  imgRegister: {
+    maxWidth: 543,
   },
 });

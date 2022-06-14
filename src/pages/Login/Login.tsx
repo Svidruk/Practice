@@ -1,5 +1,7 @@
 import Auth from '@components/Auth/Auth';
+import { Paths } from '@enums/Paths';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useStyles } from './Login.styles';
 
@@ -13,39 +15,45 @@ export const Login = () => {
 
   return (
     <Auth>
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-        }}
-        validationSchema={validate}
-        onSubmit={() => {
-          // console.log(values);
-        }}
-      >
-        {() => (
-          <Form>
-            <h1 className="label">Welcome</h1>
-            <h4 className="label2">Enter information below for login</h4>
-            <Field className={styles.inputField} type="email" name="email" placeholder="Email" />
-            <ErrorMessage name="email" />
+      <div className={styles.formContainer}>
+        <h1 className={styles.title}>Welcome!</h1>
+        <div className={styles.subTitle}>Enter information below for login</div>
+        <Formik
+          initialValues={{
+            email: '',
+            password: '',
+          }}
+          validationSchema={validate}
+          onSubmit={() => {
+            // console.log(values);
+          }}
+        >
+          {() => (
+            <Form>
+              <div className={styles.inputBlocks}>
+                <div className={styles.inputBlock}>
+                  <Field className={styles.inputField} type="email" name="email" placeholder="Email" />
+                  <ErrorMessage component="div" name="email" className={styles.errorField} />
+                </div>
+                <div className={styles.inputBlock}>
+                  <Field className={styles.inputField} type="password" name="password" placeholder="Password" />
+                  <ErrorMessage component="div" name="password" className={styles.errorField} />
+                </div>
+              </div>
 
-            <Field className={styles.inputField} type="password" name="password" placeholder="Password" />
-            <ErrorMessage name="password" />
-
-            <button className="btn" type="submit">
-              Login
-            </button>
-          </Form>
-        )}
-      </Formik>
-      <h4 className="link-label">
-        Next user ?
-        <a className="link" href={'/SignUp'}>
-          {' '}
-          Sign up
-        </a>
-      </h4>
+              <button className={styles.button} type="submit">
+                Login
+              </button>
+            </Form>
+          )}
+        </Formik>
+        <div className={styles.footer}>
+          Next user?
+          <Link to={Paths.register} className={styles.link}>
+            Sign up
+          </Link>
+        </div>
+      </div>
     </Auth>
   );
 };

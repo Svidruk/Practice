@@ -6,7 +6,7 @@ export const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     margin: '0px 200px',
-    width: 373,
+    width: 473,
     justifyContent: 'center',
     height: '100%',
     position: 'relative',
@@ -64,5 +64,9 @@ export const useStyles = makeStyles({
     color: Colors.gray,
     fontWeight: 700,
     marginLeft: 4,
+  },
+  inputBlockCombine: {
+    display: 'flex',
+    columnGap: 15,
   },
 });

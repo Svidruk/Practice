@@ -2,20 +2,24 @@ import React, { FC, ReactNode } from 'react';
 import { useStyles } from './Auth.styles';
 import { ReactComponent as Close } from '@assets/icons/Close.svg';
 import auth from '@assets/img/auth.png';
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+import { Paths } from '@enums/Paths';
 
 interface Props {
   children: ReactNode;
+  isRegisterPage?: boolean;
 }
 
-const Auth: FC<Props> = ({ children }) => {
+const Auth: FC<Props> = ({ children, isRegisterPage }) => {
   const styles = useStyles();
   return (
     <div className={styles.container}>
-      <div className={styles.closeBtn}>
+      <Link className={styles.closeBtn} to={Paths.root}>
         <Close />
-      </div>
-      <img className={styles.img} src={auth} alt="auth" />
-      <div className={styles.formContainer}>{children}</div>
+      </Link>
+      <img className={classNames(styles.img, { [styles.imgRegister]: isRegisterPage })} src={auth} alt="auth" />
+      {children}
     </div>
   );
 };
