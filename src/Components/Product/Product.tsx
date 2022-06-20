@@ -1,6 +1,7 @@
 import { useStyles } from './Product.styles';
 import { FC, useState } from 'react';
-import inCard from '@assets/img/inCard.png';
+import { ReactComponent as Basket } from '@assets/icons/Basket.svg';
+import classNames from 'classnames';
 
 interface Props {
   image: string;
@@ -13,32 +14,44 @@ interface Props {
 const Product: FC<Props> = ({ image, productName, price, sold, initialQuantity }) => {
   const styles = useStyles();
 
-  const [quantity, setQuantity] = useState(initialQuantity);
+  const [numberProductsInBasket, setNumberProductsInBasket] = useState(initialQuantity);
 
   return (
     <div className={styles.container}>
-      <img className={styles.inCard} src={inCard}></img>
-      <img className={styles.productImage} src={image} alt="" />
-      <h4 className={styles.productName}>{productName}</h4>
-      <h5 className={styles.soldLabel}>{sold} Sold</h5>
-      <div>
-        <b className={styles.priceLabel}>${price.toFixed(2)}</b>
-        <span className={styles.quantitySpan}>
-          {quantity != 0 && (
+      {numberProductsInBasket !== 0 && (
+        <div className={styles.inCard}>
+          <Basket />
+          <p>In card</p>
+        </div>
+      )}
+      <img className={styles.productImage} src={image} alt="Product Image" />
+      <div className={styles.productInfo}>
+        <h4 className={styles.productName}>{productName}</h4>
+        <h5 className={styles.soldCount}>{sold} Sold</h5>
+        <div className={styles.productManipulation}>
+          <b className={styles.productPrice}>${price.toFixed(2)}</b>
+          <div className={styles.addToBasketBlock}>
+            {numberProductsInBasket !== 0 && (
+              <>
+                <button
+                  onClick={() => {
+                    if (numberProductsInBasket > 0) setNumberProductsInBasket(numberProductsInBasket - 1);
+                  }}
+                  className={classNames(styles.button, styles.subButton)}
+                >
+                  -
+                </button>
+                <b className={styles.countInBasket}>{numberProductsInBasket}</b>
+              </>
+            )}
             <button
-              onClick={() => {
-                if (quantity > 0) setQuantity(quantity - 1);
-              }}
-              className={styles.subButton}
+              onClick={() => setNumberProductsInBasket(numberProductsInBasket + 1)}
+              className={classNames(styles.button, styles.addButton)}
             >
-              -
+              +
             </button>
-          )}
-          <b className={styles.spacing}> {quantity} </b>
-          <button onClick={() => setQuantity(quantity + 1)} className={styles.addButton}>
-            +
-          </button>
-        </span>
+          </div>
+        </div>
       </div>
     </div>
   );

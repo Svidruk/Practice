@@ -4,14 +4,15 @@ import { Register } from '@pages/Register/Register';
 import { Home } from '@pages/Home/Home';
 import React, { FC } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { DefaultLayout } from '@pages/DefaultLayout';
 
 const AppRouter: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={Paths.root} element={<Home />}></Route>
         <Route path={Paths.login} element={<Login />}></Route>
         <Route path={Paths.register} element={<Register />}></Route>
+        <Route path={Paths.root} element={<DefaultLayout children={<Home />} />}></Route>
       </Routes>
     </BrowserRouter>
   );
