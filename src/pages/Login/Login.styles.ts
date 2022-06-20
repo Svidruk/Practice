@@ -41,7 +41,7 @@ export const useStyles = makeStyles({
     height: 54,
     borderRadius: 40,
     padding: '0px 30px',
-    background: '#3BBEB6',
+    background: Colors.cyan,
     border: 'none',
     color: '#fff',
     cursor: 'pointer',
@@ -61,8 +61,11 @@ export const useStyles = makeStyles({
   },
   link: {
     textDecoration: 'none',
-    color: Colors.gray,
+    color: Colors.cyan,
     fontWeight: 700,
     marginLeft: 4,
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
 });
