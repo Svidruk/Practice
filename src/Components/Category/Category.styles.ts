@@ -7,12 +7,10 @@ export const useStyles = makeStyles({
     justifyContent: 'left',
     paddingRight: '16px',
   },
-
   label: {
     color: Colors.gray,
     fontWeight: 100,
   },
-
   img: {
     borderRadius: '10px',
     height: 'auto',

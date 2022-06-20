@@ -3,84 +3,86 @@ import Colors from '@styles/Colors';
 
 export const useStyles = makeStyles({
   container: {
-    display: 'block',
     position: 'relative',
     borderRadius: 20,
     boxShadow: '2px 2px 10px 1px #f5f5f5',
-    marginRight: 20,
-    marginBottom: 20,
-    padding: 12,
   },
-
   inCard: {
     position: 'absolute',
-    margin: 0,
-    width: 65,
-    height: 'auto',
-  },
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 12,
+    background: 'rgba(59, 190, 182, 0.9)',
+    width: 78,
+    height: 24,
+    color: Colors.white,
+    top: 12,
+    left: 12,
+    fontSize: 14,
 
+    '& svg': {
+      width: 18,
+      height: 18,
+    },
+  },
   productImage: {
-    width: 200,
     height: 'auto',
+    width: '100%',
     borderRadius: 20,
-    margin: -12,
   },
-
-  addButton: {
+  productInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '0px 20px',
+  },
+  button: {
     height: 35,
     width: 35,
     borderRadius: 17.5,
     border: 'none',
+    fontSize: 18,
+    cursor: 'pointer',
+    transition: 'all 0.1s ease-in-out',
+
+    '&:hover': {
+      transform: 'scale(0.95)',
+    },
+  },
+  addButton: {
     background: Colors.black,
     color: Colors.white,
-    paddingBottom: 3,
-    fontSize: 18,
-    alignContent: 'center',
-    '&:active': {
-      transform: 'scale(0.95)',
-    },
   },
-
   subButton: {
-    height: 35,
-    width: 35,
-    borderRadius: 17.5,
-    border: 'none',
-    fontSize: 18,
-    paddingBottom: 3,
     background: '#e5e5e5',
     color: Colors.black,
-    alignContent: 'center',
-    textAlign: 'center',
-    '&:active': {
-      transform: 'scale(0.95)',
-    },
   },
-
-  hidden: {
-    display: 'none',
-  },
-
-  priceLabel: {
+  productPrice: {
     color: Colors.cyan,
   },
-
-  soldLabel: {
+  productName: {
+    margin: 0,
+    paddingTop: 18,
+    paddingBottom: 10,
+  },
+  soldCount: {
     color: Colors.gray,
     fontWeight: 'lighter',
-    marginBottom: 10,
+    margin: 0,
+    paddingBottom: 3,
   },
-
-  productName: {
-    marginTop: 20,
-    marginBottom: -10,
+  addToBasketBlock: {
+    display: 'flex',
+    alignItems: 'center',
   },
-
-  quantitySpan: {
-    marginLeft: 30,
+  countInBasket: {
+    width: 25,
+    textAlign: 'center',
   },
-
-  spacing: {
-    wordSpacing: 2,
+  productManipulation: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
   },
 });
