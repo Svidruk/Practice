@@ -40,7 +40,6 @@ export const Login = () => {
                   <ErrorMessage component="div" name="password" className={styles.errorField} />
                 </div>
               </div>
-
               <button className={styles.button} type="submit">
                 Login
               </button>

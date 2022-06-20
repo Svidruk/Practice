@@ -9,6 +9,7 @@ export const useStyles = makeStyles({
     justifyContent: 'space-between',
     height: '100%',
     position: 'relative',
+    marginBottom: 100,
   },
 
   categoriesContainer: {
@@ -16,7 +17,11 @@ export const useStyles = makeStyles({
     justifyContent: 'space-between',
   },
 
-  productsContainer: {},
+  productsContainer: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    justifyContent: 'left',
+  },
 
   contentContainer: {
     padding: '0px 200px',
@@ -68,12 +73,13 @@ export const useStyles = makeStyles({
   cart: {},
 
   welcomingImage: {
-    width: 1120,
     marginTop: '25px',
     height: 'auto',
     objectFit: 'fill',
     borderRadius: 20,
   },
+
+  imageContainer: {},
 
   searchBar: {},
 

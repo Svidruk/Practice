@@ -3,12 +3,33 @@ import { Link } from 'react-router-dom';
 import { Paths } from '@enums/Paths';
 import logo from '@assets/img/logo.png';
 import welcomingImage from '@assets/img/Autumn.png';
-import Category from '@components/Home/Category';
+import Category from '@components/Category/Category';
+import Product from '@components/Product/Product';
 import img from '@assets/img/allCategories.png';
+import ProdImg from '@assets/img/Rectangle 283.png';
+import Slider from 'react-slick';
+
+const categoryScrollSettings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 9,
+  slidesToScroll: 3,
+};
+
+const photoScrollSettings = {
+  dots: true,
+  infinite: true,
+  speed: 2500,
+  fade: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplaySpeed: 7500,
+  autoplay: true,
+};
 
 export const Home = () => {
   const styles = useStyles();
-
   return (
     <div className={styles.formContainer}>
       <div className={styles.navBar}>
@@ -25,9 +46,12 @@ export const Home = () => {
         </div>
       </div>
       <div className={styles.contentContainer}>
-        <img className={styles.welcomingImage} src={welcomingImage} alt="welcoming image" />
+        <Slider className={styles.imageContainer} {...photoScrollSettings}>
+          <img className={styles.welcomingImage} src={welcomingImage} alt="welcoming image" />
+          <img className={styles.welcomingImage} src={welcomingImage} alt="welcoming image" />
+        </Slider>
         <h3>Categories</h3>
-        <div className={styles.categoriesContainer}>
+        <Slider className={styles.categoriesContainer} {...categoryScrollSettings}>
           <Category label="all categories" image={img} />
           <Category label="all categories" image={img} />
           <Category label="all categories" image={img} />
@@ -37,8 +61,21 @@ export const Home = () => {
           <Category label="all categories" image={img} />
           <Category label="all categories" image={img} />
           <Category label="all categories" image={img} />
+          <Category label="all categories" image={img} />
+          <Category label="all categories" image={img} />
+          <Category label="all categories" image={img} />
+          <Category label="all categories" image={img} />
+          <Category label="all categories" image={img} />
+        </Slider>
+        <h3>Products</h3>
+        <div className={styles.productsContainer}>
+          <Product image={ProdImg} productName="someProduct" price={120} sold={3} initialQuantity={0} />
+          <Product image={ProdImg} productName="someProduct" price={120} sold={3} initialQuantity={0} />
+          <Product image={ProdImg} productName="someProduct" price={120} sold={3} initialQuantity={0} />
+          <Product image={ProdImg} productName="someProduct" price={120} sold={3} initialQuantity={0} />
+          <Product image={ProdImg} productName="someProduct" price={120} sold={3} initialQuantity={0} />
+          <Product image={ProdImg} productName="someProduct" price={120} sold={3} initialQuantity={0} />
         </div>
-        <div className={styles.productsContainer}></div>
       </div>
     </div>
   );

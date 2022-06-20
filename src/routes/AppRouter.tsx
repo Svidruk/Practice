@@ -9,9 +9,9 @@ const AppRouter: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path={Paths.root} element={<Home />}></Route>
         <Route path={Paths.login} element={<Login />}></Route>
         <Route path={Paths.register} element={<Register />}></Route>
-        <Route path={Paths.root} element={<Home />}></Route>
       </Routes>
     </BrowserRouter>
   );
