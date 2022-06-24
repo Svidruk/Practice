@@ -45,7 +45,7 @@ export const Home = () => {
       </Slider>
       <h3>Products</h3>
       <div className={styles.productsContainer}>
-        {Array(6)
+        {Array(10)
           .fill(0)
           .map(() => (
             <Product image={ProdImg} productName="Recycled Nylon in Black" price={120} sold={3} initialQuantity={0} />

@@ -5,7 +5,7 @@ export const useStyles = makeStyles({
   container: {
     position: 'relative',
     borderRadius: 20,
-    boxShadow: '2px 2px 10px 1px #f5f5f5',
+    boxShadow: '0px 4px 19px rgba(0, 0, 0, 0.06);',
   },
   inCard: {
     position: 'absolute',
@@ -37,14 +37,13 @@ export const useStyles = makeStyles({
     padding: '0px 20px',
   },
   button: {
-    height: 35,
-    width: 35,
+    height: 30,
+    width: 30,
     borderRadius: 17.5,
     border: 'none',
     fontSize: 18,
     cursor: 'pointer',
     transition: 'all 0.1s ease-in-out',
-
     '&:hover': {
       transform: 'scale(0.95)',
     },
@@ -72,8 +71,10 @@ export const useStyles = makeStyles({
     paddingBottom: 3,
   },
   addToBasketBlock: {
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
+    left: 10,
   },
   countInBasket: {
     width: 25,
