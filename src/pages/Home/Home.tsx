@@ -39,16 +39,16 @@ export const Home = () => {
       <Slider className={styles.categoriesContainer} {...categoryScrollSettings}>
         {Array(12)
           .fill(0)
-          .map(() => (
-            <Category label="all categories" image={img} />
+          .map((_, i) => (
+            <Category key={i} label="all categories" image={img} />
           ))}
       </Slider>
       <h3>Products</h3>
       <div className={styles.productsContainer}>
         {Array(10)
           .fill(0)
-          .map(() => (
-            <Product image={ProdImg} productName="Recycled Nylon in Black" price={120} sold={3} initialQuantity={0} />
+          .map((_, i) => (
+            <Product key={i} image={ProdImg} name="Recycled Nylon in Black" price={120} sold={3} quantity={0} />
           ))}
       </div>
     </div>

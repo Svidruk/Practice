@@ -7,7 +7,10 @@
       "@interfaces/*": ["interfaces/*"],
       "@pages/*": ["pages/*"],
       "@enums/*": ["enums/*"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@helpers/*": ["helpers/*"],
+      "@configs/*": ["configs/*"],
+      "@api/*": ["api/*"]
     }
   }
 }

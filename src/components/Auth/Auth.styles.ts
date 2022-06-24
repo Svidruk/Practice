@@ -12,6 +12,8 @@ export const useStyles = makeStyles({
     right: 40,
     top: 40,
     cursor: 'pointer',
+    width: 20,
+    height: 20,
   },
   img: {
     maxWidth: 743,

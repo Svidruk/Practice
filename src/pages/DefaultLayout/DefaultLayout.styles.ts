@@ -1,6 +1,8 @@
 import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles({
-  root: {},
+  root: {
+    position: 'relative',
+  },
   body: {},
 });
