@@ -5,16 +5,16 @@ import classNames from 'classnames';
 
 interface Props {
   image: string;
-  productName: string;
+  name: string;
   price: number;
   sold: number;
-  initialQuantity: number;
+  quantity: number;
 }
 
-const Product: FC<Props> = ({ image, productName, price, sold, initialQuantity }) => {
+const Product: FC<Props> = ({ image, name, price, sold, quantity }) => {
   const styles = useStyles();
 
-  const [numberProductsInBasket, setNumberProductsInBasket] = useState(initialQuantity);
+  const [numberProductsInBasket, setNumberProductsInBasket] = useState(quantity);
 
   return (
     <div className={styles.container}>
@@ -26,7 +26,7 @@ const Product: FC<Props> = ({ image, productName, price, sold, initialQuantity }
       )}
       <img className={styles.productImage} src={image} alt="Product Image" />
       <div className={styles.productInfo}>
-        <h4 className={styles.productName}>{productName}</h4>
+        <h4 className={styles.name}>{name}</h4>
         <h5 className={styles.soldCount}>{sold} Sold</h5>
         <div className={styles.productManipulation}>
           <b className={styles.productPrice}>${price.toFixed(2)}</b>
