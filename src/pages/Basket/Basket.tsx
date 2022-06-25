@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useStyles } from './Basket.styles';
 import { setIsBasketOpen } from './redux/actions';
 import { ReactComponent as Close } from '@assets/icons/Close.svg';
-import BasketProduct from './components/BasketProduct/BasketProduct';
+import Product from '../../components/Product/Product';
 import { useBasketData } from './hooks/useBasketData';
 import classNames from 'classnames';
 import { Timeout } from '@enums/Timeout';
@@ -72,7 +72,7 @@ export const Basket = () => {
             <h2>My Cart</h2>
             <div className={styles.products}>
               {basketData.data?.products.map((product) => (
-                <BasketProduct {...product} key={product.id} />
+                <Product {...product} key={product.id} />
               ))}
             </div>
             <div className={classNames(styles.sumBlock, { [styles.slideUp]: isClickedOnCheckout })}>
