@@ -12,8 +12,6 @@ const categoryScrollSettings = {
   speed: 500,
   slidesToShow: 9,
   slidesToScroll: 3,
-  nextArrow: <div className="vasya">12</div>,
-  prevArrow: <div className="vasya2">12</div>,
 };
 
 const photoScrollSettings = {

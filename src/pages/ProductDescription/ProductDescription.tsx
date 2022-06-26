@@ -2,7 +2,7 @@ import { useStyles } from './ProductDescription.styles';
 import { Link } from 'react-router-dom';
 import { Paths } from '@enums/Paths';
 import { ReactComponent as Back } from '@assets/icons/arrowback.svg';
-import img2 from '@assets/img/Rectangle 283.png';
+import img from '@assets/img/Rectangle 283.png';
 import classNames from 'classnames';
 
 export const ProductDescription = () => {
@@ -14,7 +14,7 @@ export const ProductDescription = () => {
         <Back /> BACK
       </Link>
       <div className={styles.description}>
-        <img className={styles.productImage} src={img2} alt="product image" />
+        <img className={styles.productImage} src={img} alt="product image" />
         <div>
           <h2>Wiley Saddle Bag - Fossil</h2>
           <h5 className={styles.soldCount}>232 Sold</h5>
