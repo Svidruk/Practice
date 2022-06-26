@@ -60,7 +60,7 @@ export const fetchHomeData = (): HomeData => {
       price: 180,
       image:
         'https://media.architecturaldigest.com/photos/5f4e9c54072307c75638c0f1/1:1/w_1280%2Cc_limit/Screen%2520Shot%25202020-09-01%2520at%25203.08.43%2520PM.png',
-      quantity: 0,
+      quantity: 1,
       category: 'furniture',
     },
     {
