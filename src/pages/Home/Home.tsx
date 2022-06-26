@@ -4,6 +4,9 @@ import Category from '@components/Category/Category';
 import Slider from 'react-slick';
 import { useHomeData } from './hooks/useHomeData';
 import Product from '@components/Product/Product';
+import { ReactComponent as Arrow } from '@assets/icons/Arrow.svg';
+import { useDispatch } from 'react-redux';
+import { getHomeData } from './redux/actions';
 
 const categoryScrollSettings = {
   dots: false,
@@ -27,7 +30,7 @@ const photoScrollSettings = {
 export const Home = () => {
   const styles = useStyles();
   const { homeData } = useHomeData();
-
+  const dispatch = useDispatch();
   return (
     <div className={styles.root}>
       <Slider className={styles.imageContainer} {...photoScrollSettings}>
@@ -48,6 +51,21 @@ export const Home = () => {
           <Product key={product.id} {...product} isHomePageProduct />
         ))}
       </div>
+      {homeData && homeData.data && homeData.data.products && homeData.data?.products.length % 10 === 0 && (
+        <div className={styles.paginationBlock}>
+          <div
+            className={styles.viewMore}
+            onClick={() => {
+              if (homeData.data) dispatch(getHomeData({ limit: 10, offset: homeData.data.products.length }));
+            }}
+          >
+            <div className={styles.viewMoreTitle}>View more products</div>
+            <div className={styles.arrowDown}>
+              <Arrow />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

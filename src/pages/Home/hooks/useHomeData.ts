@@ -12,7 +12,8 @@ export const useHomeData = (): {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!homeData.data) dispatch(getHomeData());
+    dispatch(getHomeData({ limit: 10, offset: 0 }));
   }, []);
+
   return { homeData };
 };
