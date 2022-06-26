@@ -7,7 +7,7 @@ import { SortInfoData } from '@interfaces/SortInfoData';
 
 const initialState: State = {
   home: { data: null, state: DataState.Pending },
-  baseHome: null,
+  baseProducts: null,
   sortInfo: { searchByText: '', category: '' },
 };
 
@@ -26,20 +26,20 @@ export const slice = createSlice({
   reducers: {
     setHomeData(state, action) {
       state.home = action.payload;
-      state.baseHome = action.payload.data;
+      state.baseProducts = action.payload.data.products;
     },
     setHomeDataLoading(state) {
       state.home = { data: null, state: DataState.Pending };
     },
     setSortInfo(state, action) {
-      if (!state?.baseHome?.products || !state.home.data) {
+      if (!state?.baseProducts || !state.home.data) {
         return;
       }
       state.sortInfo = action.payload;
       state.home = {
         data: {
           ...state.home.data,
-          products: getSortedData(state.baseHome.products, state.sortInfo),
+          products: getSortedData(state.baseProducts, state.sortInfo),
         },
         state: DataState.Fulfilled,
       };
