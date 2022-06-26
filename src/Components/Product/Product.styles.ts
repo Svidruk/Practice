@@ -36,14 +36,13 @@ export const useStyles = makeStyles({
     },
   },
   button: {
-    height: 35,
-    width: 35,
+    height: 30,
+    width: 30,
     borderRadius: 17.5,
     border: 'none',
     fontSize: 18,
     cursor: 'pointer',
     transition: 'all 0.1s ease-in-out',
-
     '&:hover': {
       transform: 'scale(0.95)',
     },
@@ -71,6 +70,7 @@ export const useStyles = makeStyles({
     marginBottom: 3,
   },
   addToBasketBlock: {
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
     alignSelf: 'end',

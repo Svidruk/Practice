@@ -29,5 +29,7 @@ export const useStyles = makeStyles({
     objectFit: 'fill',
     borderRadius: 20,
   },
-  imageContainer: {},
+  imageContainer: {
+    marginBottom: 30,
+  },
 });
