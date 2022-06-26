@@ -4,16 +4,20 @@ import Colors from '@styles/Colors';
 export const useStyles = makeStyles({
   container: {
     display: 'block',
-    justifyContent: 'left',
-    paddingRight: '16px',
-  },
-  label: {
-    color: Colors.gray,
-    fontWeight: 100,
+    cursor: 'pointer',
   },
   img: {
     borderRadius: '10px',
-    height: 'auto',
     width: '110px',
+    height: '110px',
+    objectFit: 'cover',
+  },
+  title: {
+    fontWeight: 100,
+    marginTop: '10px',
+    textTransform: 'capitalize',
+  },
+  currentCategory: {
+    color: Colors.gray,
   },
 });

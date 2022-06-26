@@ -9,7 +9,7 @@ const categoryScrollSettings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 9,
+  slidesToShow: 8,
   slidesToScroll: 3,
 };
 
@@ -35,11 +35,13 @@ export const Home = () => {
         <img className={styles.welcomingImage} src={welcomingImage} alt="welcoming image" />
       </Slider>
       <h3>Categories</h3>
-      <Slider className={styles.categoriesContainer} {...categoryScrollSettings}>
-        {homeData?.data?.categories.map((category) => (
-          <Category key={category.id} {...category} />
-        ))}
-      </Slider>
+      {homeData?.data?.categories && homeData?.data?.categories.length > 0 && (
+        <Slider className={styles.categoriesContainer} {...categoryScrollSettings}>
+          {homeData.data.categories.map((category) => (
+            <Category key={category.id} {...category} />
+          ))}
+        </Slider>
+      )}
       <h3>Products</h3>
       <div className={styles.productsContainer}>
         {homeData?.data?.products.map((product) => (

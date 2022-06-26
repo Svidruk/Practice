@@ -11,13 +11,15 @@ interface Props extends ProductData {
   isHomePageProduct?: boolean;
 }
 
-const Product: FC<Props> = ({ id, image, name, price, quantity, sold, isHomePageProduct }) => {
+const Product: FC<Props> = ({ id, image, name, price, quantity, sold, category, isHomePageProduct }) => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const [isClickedDeleteProduct, setIsClickedDeleteProduct] = useState(false);
 
   const removeProductFromBasket = () => {
-    setIsClickedDeleteProduct(true);
+    if (!isHomePageProduct) {
+      setIsClickedDeleteProduct(true);
+    }
     setTimeout(() => dispatch(removeProductAction(id)), Timeout.Miliseconds300);
   };
 
@@ -52,7 +54,9 @@ const Product: FC<Props> = ({ id, image, name, price, quantity, sold, isHomePage
                     if (quantity - 1 === 0) {
                       removeProductFromBasket();
                     } else {
-                      dispatch(changeProductQuantityAction({ id, image, name, price, quantity: quantity - 1 }));
+                      dispatch(
+                        changeProductQuantityAction({ id, image, name, price, category, quantity: quantity - 1 })
+                      );
                     }
                   }}
                   className={classNames(styles.button, styles.subButton)}
@@ -63,7 +67,9 @@ const Product: FC<Props> = ({ id, image, name, price, quantity, sold, isHomePage
               </>
             )}
             <button
-              onClick={() => dispatch(changeProductQuantityAction({ id, image, name, price, quantity: quantity + 1 }))}
+              onClick={() =>
+                dispatch(changeProductQuantityAction({ id, image, name, price, category, quantity: quantity + 1 }))
+              }
               className={classNames(styles.button, styles.addButton)}
             >
               +
