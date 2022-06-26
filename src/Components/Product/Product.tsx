@@ -1,51 +1,75 @@
 import { useStyles } from './Product.styles';
 import { FC, useState } from 'react';
-import { ReactComponent as Basket } from '@assets/icons/Basket.svg';
+import { ReactComponent as Close } from '@assets/icons/Close.svg';
 import classNames from 'classnames';
+import { Timeout } from '@enums/Timeout';
+import { useDispatch } from 'react-redux';
+import { changeProductQuantityAction, removeProductAction } from '@pages/Basket/redux/actions';
+import { ProductData } from '@interfaces/ProductData';
 
-interface Props {
-  image: string;
-  name: string;
-  price: number;
-  sold: number;
-  quantity: number;
+interface Props extends ProductData {
+  isHomePageProduct?: boolean;
 }
 
-const Product: FC<Props> = ({ image, name, price, sold, quantity }) => {
+const Product: FC<Props> = ({ id, image, name, price, quantity, sold, category, isHomePageProduct }) => {
   const styles = useStyles();
+  const dispatch = useDispatch();
+  const [isClickedDeleteProduct, setIsClickedDeleteProduct] = useState(false);
 
-  const [numberProductsInBasket, setNumberProductsInBasket] = useState(quantity);
+  const removeProductFromBasket = () => {
+    if (!isHomePageProduct) {
+      setIsClickedDeleteProduct(true);
+    }
+    setTimeout(() => dispatch(removeProductAction(id)), Timeout.Miliseconds300);
+  };
 
   return (
-    <div className={styles.container}>
-      {numberProductsInBasket !== 0 && (
-        <div className={styles.inCard}>
-          <Basket />
-          <p>In card</p>
+    <div
+      className={classNames(
+        styles.container,
+        { [styles.homeContainer]: isHomePageProduct },
+        { [styles.deleted]: isClickedDeleteProduct }
+      )}
+    >
+      {!isHomePageProduct && (
+        <div className={styles.closeBtn} onClick={removeProductFromBasket}>
+          <Close />
         </div>
       )}
-      <img className={styles.productImage} src={image} alt="Product Image" />
-      <div className={styles.productInfo}>
+      <img
+        className={classNames(styles.productImage, { [styles.homeProductImage]: isHomePageProduct })}
+        src={image}
+        alt="Product Image"
+      />
+      <div className={classNames(styles.productInfo, { [styles.homeProductInfo]: isHomePageProduct })}>
         <h4 className={styles.name}>{name}</h4>
-        <h5 className={styles.soldCount}>{sold} Sold</h5>
+        {isHomePageProduct && <h5 className={styles.soldCount}>{sold ? sold : 0} Sold</h5>}
         <div className={styles.productManipulation}>
           <b className={styles.productPrice}>${price.toFixed(2)}</b>
           <div className={styles.addToBasketBlock}>
-            {numberProductsInBasket !== 0 && (
+            {quantity !== 0 && (
               <>
                 <button
                   onClick={() => {
-                    if (numberProductsInBasket > 0) setNumberProductsInBasket(numberProductsInBasket - 1);
+                    if (quantity - 1 === 0) {
+                      removeProductFromBasket();
+                    } else {
+                      dispatch(
+                        changeProductQuantityAction({ id, image, name, price, category, quantity: quantity - 1 })
+                      );
+                    }
                   }}
                   className={classNames(styles.button, styles.subButton)}
                 >
                   -
                 </button>
-                <b className={styles.countInBasket}>{numberProductsInBasket}</b>
+                <b className={styles.countInBasket}>{quantity}</b>
               </>
             )}
             <button
-              onClick={() => setNumberProductsInBasket(numberProductsInBasket + 1)}
+              onClick={() =>
+                dispatch(changeProductQuantityAction({ id, image, name, price, category, quantity: quantity + 1 }))
+              }
               className={classNames(styles.button, styles.addButton)}
             >
               +

@@ -1,16 +1,15 @@
 import { useStyles } from './Home.styles';
 import welcomingImage from '@assets/img/Autumn.png';
 import Category from '@components/Category/Category';
-import Product from '@components/Product/Product';
-import img from '@assets/img/allCategories.png';
-import ProdImg from '@assets/img/Rectangle 283.png';
 import Slider from 'react-slick';
+import { useHomeData } from './hooks/useHomeData';
+import Product from '@components/Product/Product';
 
 const categoryScrollSettings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 9,
+  slidesToShow: 8,
   slidesToScroll: 3,
   nextArrow: <div className="vasya">12</div>,
   prevArrow: <div className="vasya2">12</div>,
@@ -29,6 +28,8 @@ const photoScrollSettings = {
 
 export const Home = () => {
   const styles = useStyles();
+  const { homeData } = useHomeData();
+
   return (
     <div className={styles.root}>
       <Slider className={styles.imageContainer} {...photoScrollSettings}>
@@ -36,20 +37,18 @@ export const Home = () => {
         <img className={styles.welcomingImage} src={welcomingImage} alt="welcoming image" />
       </Slider>
       <h3>Categories</h3>
-      <Slider className={styles.categoriesContainer} {...categoryScrollSettings}>
-        {Array(12)
-          .fill(0)
-          .map((_, i) => (
-            <Category key={i} label="all categories" image={img} />
+      {homeData?.data?.categories && homeData?.data?.categories.length > 0 && (
+        <Slider className={styles.categoriesContainer} {...categoryScrollSettings}>
+          {homeData.data.categories.map((category) => (
+            <Category key={category.id} {...category} />
           ))}
-      </Slider>
+        </Slider>
+      )}
       <h3>Products</h3>
       <div className={styles.productsContainer}>
-        {Array(6)
-          .fill(0)
-          .map((_, i) => (
-            <Product key={i} image={ProdImg} name="Recycled Nylon in Black" price={120} sold={3} quantity={0} />
-          ))}
+        {homeData?.data?.products.map((product) => (
+          <Product key={product.id} {...product} isHomePageProduct />
+        ))}
       </div>
     </div>
   );

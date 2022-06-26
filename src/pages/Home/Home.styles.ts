@@ -11,7 +11,6 @@ export const useStyles = makeStyles({
   },
   categoriesContainer: {
     display: 'flex',
-    justifyContent: 'space-between',
   },
   productsContainer: {
     display: 'grid',

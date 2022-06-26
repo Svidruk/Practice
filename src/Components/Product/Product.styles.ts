@@ -1,3 +1,4 @@
+import { Timeout } from '@enums/Timeout';
 import { makeStyles } from '@mui/styles';
 import Colors from '@styles/Colors';
 
@@ -6,36 +7,33 @@ export const useStyles = makeStyles({
     position: 'relative',
     borderRadius: 20,
     boxShadow: '2px 2px 10px 1px #f5f5f5',
-  },
-  inCard: {
-    position: 'absolute',
+    width: 470,
+    height: 116,
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 12,
-    background: 'rgba(59, 190, 182, 0.9)',
-    width: 78,
-    height: 24,
-    color: Colors.white,
-    top: 12,
-    left: 12,
-    fontSize: 14,
-
-    '& svg': {
-      width: 18,
-      height: 18,
-      fill: Colors.white,
-    },
+    padding: 20,
   },
   productImage: {
-    height: 'auto',
-    width: '100%',
+    height: 76,
+    width: 76,
     borderRadius: 20,
+    objectFit: 'cover',
   },
   productInfo: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '0px 20px',
+    padding: '0px 22px',
+    width: '100%',
+  },
+  closeBtn: {
+    position: 'absolute',
+    cursor: 'pointer',
+    right: 20,
+
+    '& svg': {
+      width: 10,
+      height: 10,
+      fill: Colors.gray,
+    },
   },
   button: {
     height: 35,
@@ -70,11 +68,14 @@ export const useStyles = makeStyles({
     color: Colors.gray,
     fontWeight: 'lighter',
     margin: 0,
-    paddingBottom: 3,
+    marginBottom: 3,
   },
   addToBasketBlock: {
     display: 'flex',
     alignItems: 'center',
+    alignSelf: 'end',
+    justifySelf: 'end',
+    marginLeft: 'auto',
   },
   countInBasket: {
     width: 25,
@@ -85,5 +86,25 @@ export const useStyles = makeStyles({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 8,
+    width: '100%',
+  },
+  deleted: {
+    animation: `$delete ${Timeout.Miliseconds300}ms ease-in forwards`,
+  },
+  '@keyframes delete': {
+    '100%': { height: 0, opacity: 0 },
+  },
+  homeContainer: {
+    flexDirection: 'column',
+    width: 'auto',
+    height: 'auto',
+    padding: '0px 0px',
+  },
+  homeProductImage: {
+    height: 160,
+    width: '100%',
+  },
+  homeProductInfo: {
+    padding: '0px 12px',
   },
 });

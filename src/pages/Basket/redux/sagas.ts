@@ -10,6 +10,21 @@ import {
   removeProductAction,
 } from './actions';
 import { RootState } from 'redux/store';
+import { ProductData } from '@interfaces/ProductData';
+
+const changeProductQuantityHelper = (productToChange: ProductData, products?: ProductData[]) => {
+  if (products && products.find((product) => product.id === productToChange.id)) {
+    return products.map((product) => {
+      if (product.id === productToChange.id) product.quantity = productToChange.quantity;
+      return product;
+    });
+  } else {
+    if (products) {
+      return [...products, productToChange];
+    }
+    return [productToChange];
+  }
+};
 
 function* getBasketDataAsync() {
   const setLoadingAction = setBasketDataLoading();
@@ -31,15 +46,12 @@ function* getBasketDataAsync() {
 
 function* changeProductQuantityActionAsync({ payload }: ReturnType<typeof changeProductQuantityAction>) {
   try {
-    let basketData: BasketData = yield select((state: RootState) => state.basketReducer.basket.data);
-    basketData = JSON.parse(JSON.stringify(basketData));
+    const basketData: BasketData = yield select((state: RootState) => state.basketReducer.basket.data);
+    const newBasketData: BasketData = JSON.parse(JSON.stringify(basketData));
     const setBasketDataAction = setBasketData({
       data: {
-        ...basketData,
-        products: basketData.products.map((product) => {
-          if (product.id === payload.id) product.quantity = payload.quantity;
-          return product;
-        }),
+        ...newBasketData,
+        products: changeProductQuantityHelper(payload, newBasketData.products),
       },
       state: DataState.Fulfilled,
     });

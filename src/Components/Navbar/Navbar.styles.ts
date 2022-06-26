@@ -14,7 +14,6 @@ export const useStyles = makeStyles({
   navContent: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
     width: 1020,
     margin: '0 auto',
     height: '100%',
@@ -40,10 +39,26 @@ export const useStyles = makeStyles({
     border: 'none',
     color: '#fff',
   },
-  searchBar: {},
+  searchBar: {
+    width: 600,
+    marginLeft: 50,
+    background: 'rgba(239, 239, 239, 0.7)',
+    borderRadius: 40,
+    padding: '12px 20px',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  searchBarInput: {
+    webkitAppearance: 'none',
+    outline: 'none',
+    border: 'none',
+    background: 'transparent',
+    marginLeft: '10px',
+  },
   userOptions: {
     display: 'flex',
     alignItems: 'center',
+    marginLeft: 'auto',
   },
   basket: {
     position: 'relative',
