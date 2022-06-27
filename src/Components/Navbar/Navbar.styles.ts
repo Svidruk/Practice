@@ -89,7 +89,7 @@ export const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     width: 72,
-    border: '3px solid',
+    border: '1px solid',
     borderColor: Colors.gray,
     borderRadius: 28,
     cursor: 'pointer',

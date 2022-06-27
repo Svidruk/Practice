@@ -46,26 +46,37 @@ export const Home = () => {
         </Slider>
       )}
       <h3>Products</h3>
-      <div className={styles.productsContainer}>
-        {homeData?.data?.products.map((product) => (
-          <Product key={product.id} {...product} isHomePageProduct />
-        ))}
-      </div>
-      {homeData && homeData.data && homeData.data.products && homeData.data?.products.length % 10 === 0 && (
-        <div className={styles.paginationBlock}>
-          <div
-            className={styles.viewMore}
-            onClick={() => {
-              if (homeData.data) dispatch(getHomeData({ limit: 10, offset: homeData.data.products.length }));
-            }}
-          >
-            <div className={styles.viewMoreTitle}>View more products</div>
-            <div className={styles.arrowDown}>
-              <Arrow />
-            </div>
-          </div>
+      {homeData && homeData.data && homeData.data.products && homeData.data?.products.length > 0 ? (
+        <div className={styles.productsContainer}>
+          {homeData?.data?.products.map((product) => (
+            <Product key={product.id} {...product} isHomePageProduct />
+          ))}
+        </div>
+      ) : (
+        <div className={styles.noData}>
+          <div className={styles.smile}>🥺</div>
+          <h1>Can't find such products</h1>
         </div>
       )}
+      {homeData &&
+        homeData.data &&
+        homeData.data.products &&
+        homeData.data?.products.length > 0 &&
+        homeData.data?.products.length % 10 === 0 && (
+          <div className={styles.paginationBlock}>
+            <div
+              className={styles.viewMore}
+              onClick={() => {
+                if (homeData.data) dispatch(getHomeData({ limit: 10, offset: homeData.data.products.length }));
+              }}
+            >
+              <div className={styles.viewMoreTitle}>View more products</div>
+              <div className={styles.arrowDown}>
+                <Arrow />
+              </div>
+            </div>
+          </div>
+        )}
     </div>
   );
 };

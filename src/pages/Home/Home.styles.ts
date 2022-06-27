@@ -66,4 +66,17 @@ export const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  noData: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: 400,
+    background: 'rgba(168, 172, 184, 0.1)',
+    borderRadius: 20,
+    flexDirection: 'column',
+  },
+  smile: {
+    fontSize: 160,
+  },
 });

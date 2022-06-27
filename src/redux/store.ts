@@ -4,6 +4,7 @@ import { rootSaga } from './rootSaga';
 import userReducer from './user/reducers';
 import basketReducer from '../pages/Basket/redux/reducers';
 import homeReducer from '../pages/Home/redux/reducers';
+import productDescriptionReducer from '../pages/ProductDescription/redux/reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     userReducer,
     basketReducer,
     homeReducer,
+    productDescriptionReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
 });
