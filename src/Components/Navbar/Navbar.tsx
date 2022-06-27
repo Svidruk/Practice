@@ -10,13 +10,16 @@ import { setIsBasketOpen } from '@pages/Basket/redux/actions';
 import { getIsBasketOpen } from '@pages/Basket/redux/selectors';
 import { ReactComponent as Search } from '@assets/icons/Search.svg';
 import { setSortInfo } from '@pages/Home/redux/actions';
-import { RootState } from 'redux/store';
+import { RootState } from '@redux/store';
+import { useAuth } from '@hooks/useAuth';
+import { ReactComponent as Burger } from '@assets/icons/Burger.svg';
 
 const Navbar: FC = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const isBasketOpen = useSelector(getIsBasketOpen);
   const sortInfo = useSelector((state: RootState) => state.homeReducer.sortInfo);
+  const { currentUser } = useAuth();
 
   const handleBasketOpen = useCallback(() => {
     dispatch(setIsBasketOpen());
@@ -47,14 +50,23 @@ const Navbar: FC = () => {
             <div className={styles.numberProductsInBasket}>3</div>
             <Basket />
           </div>
-          <div>
-            <Link to={Paths.login} className={classNames(styles.button, styles.logInButton)}>
-              Log In
-            </Link>
-            <Link to={Paths.register} className={classNames(styles.button, styles.signUpButton)}>
-              Sign Up
-            </Link>
-          </div>
+          {currentUser ? (
+            <div className={styles.menu}>
+              <div className={styles.burger}>
+                <Burger />
+              </div>
+              <div className={styles.user}>{currentUser.fullName[0].toUpperCase()}</div>
+            </div>
+          ) : (
+            <div>
+              <Link to={Paths.login} className={classNames(styles.button, styles.logInButton)}>
+                Log In
+              </Link>
+              <Link to={Paths.register} className={classNames(styles.button, styles.signUpButton)}>
+                Sign Up
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

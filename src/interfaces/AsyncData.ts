@@ -1,8 +1,8 @@
 import { DataState } from '../enums/DataState';
-import { ErrorInfo } from './ErrorInfo';
+import { ErrorInfoData } from './ErrorInfoData';
 
 export interface AsyncData<T> {
   data: T | null;
   state: DataState;
-  error?: ErrorInfo;
+  error?: ErrorInfoData;
 }

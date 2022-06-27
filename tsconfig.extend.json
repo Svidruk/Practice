@@ -10,7 +10,9 @@
       "@components/*": ["components/*"],
       "@helpers/*": ["helpers/*"],
       "@configs/*": ["configs/*"],
-      "@api/*": ["api/*"]
+      "@api/*": ["api/*"],
+      "@hooks/*": ["hooks/*"],
+      "@redux/*": ["redux/*"]
     }
   }
 }

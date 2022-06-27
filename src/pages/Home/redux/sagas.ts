@@ -3,7 +3,7 @@ import { HomeData } from '@interfaces/HomeData';
 import { fetchHomeData } from '@api/homeApi';
 import { all, call, put, takeLatest, select } from 'redux-saga/effects';
 import { getHomeData, setHomeData, setHomeDataLoading } from './actions';
-import { RootState } from 'redux/store';
+import { RootState } from '@redux/store';
 import { ProductData } from '@interfaces/ProductData';
 
 function* getHomeDataAsync({ payload }: ReturnType<typeof getHomeData>) {

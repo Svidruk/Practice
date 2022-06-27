@@ -2,7 +2,7 @@ import { AsyncData } from '@interfaces/AsyncData';
 import { HomeData } from '@interfaces/HomeData';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'redux/store';
+import { RootState } from '@redux/store';
 import { getHomeData } from '../redux/actions';
 
 export const useHomeData = (): {
@@ -12,7 +12,7 @@ export const useHomeData = (): {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getHomeData({ limit: 10, offset: 0 }));
+    if (!homeData.data) dispatch(getHomeData({ limit: 10, offset: 0 }));
   }, []);
 
   return { homeData };

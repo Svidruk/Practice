@@ -2,16 +2,25 @@ import Auth from '@components/Auth/Auth';
 import { Paths } from '@enums/Paths';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
+import { loginUser } from '../../redux/user/actions';
 import * as Yup from 'yup';
 import { useStyles } from './Login.styles';
+import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
+import { LoginUserData } from '@interfaces/LoginUserData';
 
 export const Login = () => {
   const styles = useStyles();
+  const dispatch = useDispatch();
 
   const validate = Yup.object({
     email: Yup.string().email('Email is invalid').required('Email is required'),
     password: Yup.string().min(6, 'Password must be at least 6 charaters').required('Password is required'),
   });
+
+  const handleFormSubmit = useCallback((values: LoginUserData) => {
+    dispatch(loginUser(values));
+  }, []);
 
   return (
     <Auth>
@@ -24,9 +33,7 @@ export const Login = () => {
             password: '',
           }}
           validationSchema={validate}
-          onSubmit={() => {
-            // console.log(values);
-          }}
+          onSubmit={handleFormSubmit}
         >
           {() => (
             <Form>

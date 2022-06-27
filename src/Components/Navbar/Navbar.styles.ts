@@ -84,4 +84,28 @@ export const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  menu: {
+    height: 42,
+    display: 'flex',
+    alignItems: 'center',
+    width: 72,
+    border: '3px solid',
+    borderColor: Colors.gray,
+    borderRadius: 28,
+    cursor: 'pointer',
+    marginLeft: 30,
+  },
+  burger: {
+    margin: '0 12px',
+  },
+  user: {
+    width: 18,
+    height: 18,
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: Colors.gray,
+    color: Colors.white,
+  },
 });

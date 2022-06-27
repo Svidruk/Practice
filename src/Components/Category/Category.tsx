@@ -3,7 +3,7 @@ import { FC, useCallback } from 'react';
 import { CategoryData } from '@interfaces/CategoryData';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSortInfo } from '@pages/Home/redux/actions';
-import { RootState } from 'redux/store';
+import { RootState } from '@redux/store';
 import classNames from 'classnames';
 
 const Category: FC<CategoryData> = ({ image, name }) => {

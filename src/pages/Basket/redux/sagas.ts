@@ -9,7 +9,7 @@ import {
   changeProductQuantityAction,
   removeProductAction,
 } from './actions';
-import { RootState } from 'redux/store';
+import { RootState } from '@redux/store';
 import { ProductData } from '@interfaces/ProductData';
 
 const changeProductQuantityHelper = (productToChange: ProductData, products?: ProductData[]) => {

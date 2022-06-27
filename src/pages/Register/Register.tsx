@@ -1,12 +1,24 @@
 import Auth from '@components/Auth/Auth';
 import { Paths } from '@enums/Paths';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
+import { useCallback, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useStyles } from './Register.styles';
+import { registerUser } from '../../redux/user/actions';
+import { useDispatch } from 'react-redux';
+import { RegisterUserData } from '@interfaces/RegisterUserData';
+import { useAuth } from '@hooks/useAuth';
 
 export const Register = () => {
   const styles = useStyles();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
+
+  useEffect(() => {
+    if (currentUser) navigate(Paths.root);
+  }, [currentUser]);
 
   const validate = Yup.object({
     firstName: Yup.string().required('Required'),
@@ -17,6 +29,11 @@ export const Register = () => {
       .oneOf([Yup.ref('password'), null], 'Password must match')
       .required('Confirm password is required'),
   });
+
+  const handleFormSubmit = useCallback((values: RegisterUserData) => {
+    const { firstName, lastName, email, password } = values;
+    dispatch(registerUser({ firstName, lastName, email, password }));
+  }, []);
 
   return (
     <Auth isRegisterPage>
@@ -32,9 +49,7 @@ export const Register = () => {
             confirmPassword: '',
           }}
           validationSchema={validate}
-          onSubmit={() => {
-            // console.log(values);
-          }}
+          onSubmit={handleFormSubmit}
         >
           {() => (
             <Form>

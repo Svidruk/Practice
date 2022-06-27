@@ -6,6 +6,8 @@ import { Timeout } from '@enums/Timeout';
 import { useDispatch } from 'react-redux';
 import { changeProductQuantityAction, removeProductAction } from '@pages/Basket/redux/actions';
 import { ProductData } from '@interfaces/ProductData';
+import { Paths } from '@enums/Paths';
+import { Link } from 'react-router-dom';
 
 interface Props extends ProductData {
   isHomePageProduct?: boolean;
@@ -36,13 +38,17 @@ const Product: FC<Props> = ({ id, image, name, price, quantity, sold, category, 
           <Close />
         </div>
       )}
-      <img
-        className={classNames(styles.productImage, { [styles.homeProductImage]: isHomePageProduct })}
-        src={image}
-        alt="Product Image"
-      />
+      <Link to={`${Paths.product}/${id}`}>
+        <img
+          className={classNames(styles.productImage, { [styles.homeProductImage]: isHomePageProduct })}
+          src={image}
+          alt="Product Image"
+        />
+      </Link>
       <div className={classNames(styles.productInfo, { [styles.homeProductInfo]: isHomePageProduct })}>
-        <h4 className={styles.name}>{name}</h4>
+        <Link to={`${Paths.product}/${id}`}>
+          <h4 className={styles.name}>{name}</h4>
+        </Link>
         {isHomePageProduct && <h5 className={styles.soldCount}>{sold ? sold : 0} Sold</h5>}
         <div className={styles.productManipulation}>
           <b className={styles.productPrice}>${price.toFixed(2)}</b>

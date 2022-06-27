@@ -1,6 +1,6 @@
 import { AsyncData } from '../../interfaces/AsyncData';
-import { User } from '../../interfaces/User';
+import { UserData } from '../../interfaces/UserData';
 
 export interface State {
-  currentUser: AsyncData<User>;
+  currentUser: AsyncData<UserData>;
 }
