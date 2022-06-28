@@ -1,5 +1,4 @@
 import { useStyles } from './Home.styles';
-import welcomingImage from '@assets/img/Autumn.png';
 import Category from '@components/Category/Category';
 import Slider from 'react-slick';
 import { useHomeData } from './hooks/useHomeData';
@@ -7,77 +6,7 @@ import Product from '@components/Product/Product';
 import { ReactComponent as Arrow } from '@assets/icons/Arrow.svg';
 import { useDispatch } from 'react-redux';
 import { getHomeData } from './redux/actions';
-import { ScreenWidth } from '@styles/Breakpoints';
-
-const categoryScrollSettings = {
-  dots: false,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 8,
-  slidesToScroll: 3,
-  responsive: [
-    {
-      breakpoint: ScreenWidth.desktop - 1,
-      settings: {
-        slidesToShow: 7,
-        slidesToScroll: 3,
-        infinite: true,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
-
-const photoScrollSettings = {
-  dots: true,
-  infinite: true,
-  speed: 2500,
-  fade: true,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplaySpeed: 7500,
-  autoplay: true,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
+import { categoryScrollSettings, photoScrollSettings } from './settings/SliderSettings';
 
 export const Home = () => {
   const styles = useStyles();
@@ -86,8 +15,21 @@ export const Home = () => {
   return (
     <div className={styles.root}>
       <Slider className={styles.imageContainer} {...photoScrollSettings}>
-        <img className={styles.welcomingImage} src={welcomingImage} alt="welcoming image" />
-        <img className={styles.welcomingImage} src={welcomingImage} alt="welcoming image" />
+        <img
+          className={styles.welcomingImage}
+          src="https://static.vecteezy.com/system/resources/thumbnails/001/803/442/original/ukraine-flag-loop-free-video.jpg"
+          alt="welcoming imgUrl"
+        />
+        <img
+          className={styles.welcomingImage}
+          src="https://lightfield.ua/img/studios/interior/img-cafeshop-1.jpg"
+          alt="welcoming imgUrl"
+        />
+        <img
+          className={styles.welcomingImage}
+          src="https://img.freepik.com/free-photo/abstract-blur-defocused-shopping-mall-center-department-store_1203-9225.jpg?w=2000"
+          alt="welcoming imgUrl"
+        />
       </Slider>
       <h3>Categories</h3>
       {homeData?.data?.categories && homeData?.data?.categories.length > 0 && (

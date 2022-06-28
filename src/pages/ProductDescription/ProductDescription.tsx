@@ -16,7 +16,7 @@ export const ProductDescription = () => {
         <img
           className={styles.productImage}
           src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg"
-          alt="product image"
+          alt="product imgUrl"
         />
         <div>
           <h2>Wiley Saddle Bag - Fossil</h2>
@@ -36,7 +36,7 @@ export const ProductDescription = () => {
       <hr className={styles.line} />
       <div className={styles.extraInfo}>
         <h3 className={styles.header}>Extra Information</h3>
-        <img className={styles.image} src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg" />
+        <img className={styles.imgUrl} src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg" />
         <h4>Take a look at a new style!</h4>
         <text className={styles.text}>
           No matter where you're heading, the Uptown wallet on chain from Saint Laurent will lend Parisian glamour to

@@ -121,7 +121,7 @@ export const useStyles = makeStyles({
   dropDown: {
     position: 'absolute',
     bottom: 0,
-    width: 100,
+    width: 120,
     height: 100,
     background: Colors.white,
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.04)',
@@ -132,7 +132,7 @@ export const useStyles = makeStyles({
     justifyContent: 'end',
     alignItems: 'center',
     flexDirection: 'column',
-    padding: '10px 0',
+    padding: '10px 10px',
   },
   logOutButton: {
     width: '100%',

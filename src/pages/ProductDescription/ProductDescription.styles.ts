@@ -7,7 +7,6 @@ export const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'space-between',
     position: 'relative',
-    marginBottom: 44,
   },
   back: {
     textDecoration: 'none',
@@ -67,7 +66,7 @@ export const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  image: {
+  imgUrl: {
     width: '100%',
     height: '100%',
     objectFit: 'cover',

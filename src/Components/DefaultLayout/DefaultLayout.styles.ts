@@ -8,6 +8,8 @@ export const useStyles = makeStyles({
   body: {
     maxWidth: ScreenWidth.desktop,
     margin: '0 auto',
+    padding: '0px 30px',
+    paddingBottom: 100,
   },
   notificationsHolder: {
     position: 'fixed',

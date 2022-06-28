@@ -8,7 +8,6 @@ export const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'space-between',
     position: 'relative',
-    paddingBottom: 100,
   },
   categoriesContainer: {
     display: 'flex',
@@ -34,12 +33,12 @@ export const useStyles = makeStyles({
   },
   welcomingImage: {
     marginTop: '25px',
-    height: 'auto',
-    objectFit: 'fill',
+    maxHeight: 400,
+    objectFit: 'cover',
     borderRadius: 20,
   },
   imageContainer: {
-    width: '100%',
+    display: 'flex',
   },
   paginationBlock: {
     position: 'absolute',
@@ -87,5 +86,10 @@ export const useStyles = makeStyles({
   },
   smile: {
     fontSize: 160,
+  },
+  categorySkeleton: {
+    width: '110px',
+    height: '110px',
+    background: 'rgba(168, 172, 184, 1)',
   },
 });

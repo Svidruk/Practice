@@ -1,6 +1,6 @@
 export interface ProductDescriptionData {
   id: number;
-  image: string;
+  imgUrl: string;
   name: string;
   price: number;
   quantity: number;

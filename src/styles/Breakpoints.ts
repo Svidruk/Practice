@@ -1,6 +1,6 @@
 export const ScreenWidth = {
   mobile: 725,
-  desktop: 1087,
+  desktop: 1100,
 };
 
 export const Breakpoints = {

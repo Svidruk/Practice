@@ -50,30 +50,32 @@ const Navbar: FC = () => {
           />
         </div>
         <div className={styles.userOptions}>
-          <div className={styles.basket} onClick={handleBasketOpen}>
-            <div className={styles.numberProductsInBasket}>3</div>
-            <Basket />
-          </div>
           {currentUser ? (
-            <div className={styles.menu} onClick={() => setIsDropDownOpen((isDropDownOpen) => !isDropDownOpen)}>
-              <div className={styles.burger}>
-                <Burger />
+            <>
+              <div className={styles.basket} onClick={handleBasketOpen}>
+                <div className={styles.numberProductsInBasket}>3</div>
+                <Basket />
               </div>
-              <div className={styles.user}>{currentUser?.fullName[0].toUpperCase()}</div>
-              {isDropDownOpen && (
-                <div className={styles.dropDown} onClick={(e) => e.stopPropagation()}>
-                  <div
-                    className={classNames(styles.button, styles.logOutButton)}
-                    onClick={() => {
-                      clearAuthToken();
-                      dispatch(setCurrentUser({ data: null, state: DataState.Fulfilled }));
-                    }}
-                  >
-                    Log Out
-                  </div>
+              <div className={styles.menu} onClick={() => setIsDropDownOpen((isDropDownOpen) => !isDropDownOpen)}>
+                <div className={styles.burger}>
+                  <Burger />
                 </div>
-              )}
-            </div>
+                <div className={styles.user}>{currentUser?.fullName[0].toUpperCase()}</div>
+                {isDropDownOpen && (
+                  <div className={styles.dropDown} onClick={(e) => e.stopPropagation()}>
+                    <div
+                      className={classNames(styles.button, styles.logOutButton)}
+                      onClick={() => {
+                        clearAuthToken();
+                        dispatch(setCurrentUser({ data: null, state: DataState.Fulfilled }));
+                      }}
+                    >
+                      Log Out
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
           ) : (
             <div>
               <Link to={Paths.login} className={classNames(styles.button, styles.logInButton)}>

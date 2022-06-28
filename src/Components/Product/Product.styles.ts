@@ -16,7 +16,7 @@ export const useStyles = makeStyles({
     height: 76,
     width: 76,
     borderRadius: 20,
-    objectFit: 'cover',
+    objectFit: 'contain',
   },
   productInfo: {
     display: 'flex',

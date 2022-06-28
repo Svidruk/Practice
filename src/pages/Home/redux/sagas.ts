@@ -16,7 +16,18 @@ function* getHomeDataAsync({ payload }: ReturnType<typeof getHomeData>) {
       data:
         baseProducts && !baseProducts.some((product) => product.id === response.products[0].id)
           ? { ...response, products: [...baseProducts, ...response.products] }
-          : response,
+          : {
+              ...response,
+              categories: [
+                {
+                  id: 12312312312312,
+                  name: 'All categories',
+                  imgUrl:
+                    'https://thumbs.dreamstime.com/b/hypermarket-products-concept-various-seeing-product-categories-white-background-197700472.jpg',
+                },
+                ...response.categories,
+              ],
+            },
       state: DataState.Fulfilled,
     });
     yield put(setHomeDataAction);
