@@ -7,8 +7,6 @@ export const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'space-between',
     position: 'relative',
-    width: 1020,
-    margin: '0 auto',
     marginBottom: 44,
   },
   back: {

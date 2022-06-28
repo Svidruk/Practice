@@ -15,7 +15,7 @@ export const useAuth = (): { currentUser: UserData | null } => {
     if (!currentUser && authToken) {
       dispatch(getCurrentUser());
     }
-  }, [currentUser, dispatch]);
+  }, [currentUser]);
 
   return {
     currentUser,

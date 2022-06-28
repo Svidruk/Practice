@@ -1,17 +1,24 @@
 import Auth from '@components/Auth/Auth';
 import { Paths } from '@enums/Paths';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../redux/user/actions';
 import * as Yup from 'yup';
 import { useStyles } from './Login.styles';
-import { useDispatch } from 'react-redux';
-import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useCallback, useEffect } from 'react';
 import { LoginUserData } from '@interfaces/LoginUserData';
+import { selectUser } from '@redux/user/selectors';
 
 export const Login = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const currentUser = useSelector(selectUser);
+
+  useEffect(() => {
+    if (currentUser) navigate(Paths.root);
+  }, [currentUser]);
 
   const validate = Yup.object({
     email: Yup.string().email('Email is invalid').required('Email is required'),

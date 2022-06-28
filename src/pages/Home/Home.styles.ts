@@ -1,4 +1,5 @@
 import { makeStyles } from '@mui/styles';
+import { Breakpoints } from '@styles/Breakpoints';
 import Colors from './../../styles/Colors';
 
 export const useStyles = makeStyles({
@@ -7,8 +8,6 @@ export const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'space-between',
     position: 'relative',
-    width: 1020,
-    margin: '0 auto',
     paddingBottom: 100,
   },
   categoriesContainer: {
@@ -20,6 +19,14 @@ export const useStyles = makeStyles({
     justifyContent: 'left',
     columnGap: '20px',
     rowGap: '20px',
+
+    [Breakpoints.tablet]: {
+      gridTemplateColumns: 'repeat(4, 1fr)',
+    },
+
+    [Breakpoints.mobile]: {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    },
   },
   authLinks: {
     position: 'relative',
@@ -31,7 +38,9 @@ export const useStyles = makeStyles({
     objectFit: 'fill',
     borderRadius: 20,
   },
-  imageContainer: {},
+  imageContainer: {
+    width: '100%',
+  },
   paginationBlock: {
     position: 'absolute',
     bottom: 0,

@@ -3,11 +3,14 @@ import { UserData } from '@interfaces/UserData';
 import { DataState } from '@enums/DataState';
 import { getCurrentUser, loginUser, registerUser, setCurrentUser } from './actions';
 import { fetchCurrentUser, loginUserHttp, registrationUser } from '@api/userApi';
+import { displayNotification } from '@redux/notifications/actions';
+import { getErrorInfo } from '@helpers/getErrorInfo';
+import axios from 'axios';
 
 function* getCurrentUserAsync() {
   try {
-    const response: { data: UserData } = yield call(fetchCurrentUser);
-    yield put(setCurrentUser({ data: response.data, state: DataState.Fulfilled }));
+    const response: UserData = yield call(fetchCurrentUser);
+    yield put(setCurrentUser({ data: response, state: DataState.Fulfilled }));
   } catch (error) {
     yield put(
       setCurrentUser({
@@ -20,32 +23,19 @@ function* getCurrentUserAsync() {
 
 function* registerUserAsync({ payload: user }: ReturnType<typeof registerUser>) {
   try {
-    yield put(
-      setCurrentUser({
-        data: { fullName: user.firstName + ' ' + user.lastName, email: user.email },
-        state: DataState.Fulfilled,
-      })
-    );
-
     const response: UserData = yield call(registrationUser, user);
     yield put(setCurrentUser({ data: response, state: DataState.Fulfilled }));
   } catch (error) {
-    // console.log('error register');
+    yield put(displayNotification(axios.isAxiosError(error) ? getErrorInfo(error).message : "Can't register user"));
   }
 }
 
 function* loginUserAsync({ payload: user }: ReturnType<typeof loginUser>) {
   try {
-    yield put(
-      setCurrentUser({
-        data: { fullName: 'man', email: user.email },
-        state: DataState.Fulfilled,
-      })
-    );
     const response: UserData = yield call(loginUserHttp, user);
     yield put(setCurrentUser({ data: response, state: DataState.Fulfilled }));
   } catch (error) {
-    // console.log('error login');
+    yield put(displayNotification(axios.isAxiosError(error) ? getErrorInfo(error).message : 'User not found'));
   }
 }
 

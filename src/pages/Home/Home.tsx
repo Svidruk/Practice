@@ -7,6 +7,7 @@ import Product from '@components/Product/Product';
 import { ReactComponent as Arrow } from '@assets/icons/Arrow.svg';
 import { useDispatch } from 'react-redux';
 import { getHomeData } from './redux/actions';
+import { ScreenWidth } from '@styles/Breakpoints';
 
 const categoryScrollSettings = {
   dots: false,
@@ -14,6 +15,31 @@ const categoryScrollSettings = {
   speed: 500,
   slidesToShow: 8,
   slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: ScreenWidth.desktop - 1,
+      settings: {
+        slidesToShow: 7,
+        slidesToScroll: 3,
+        infinite: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 const photoScrollSettings = {
@@ -25,6 +51,32 @@ const photoScrollSettings = {
   slidesToScroll: 1,
   autoplaySpeed: 7500,
   autoplay: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 export const Home = () => {

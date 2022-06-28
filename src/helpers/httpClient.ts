@@ -9,7 +9,7 @@ const httpClient = axios.create({
 
 httpClient.interceptors.request.use((config) => {
   const token = getAuthToken();
-  const newConfig = { ...config, headers: { ...config.headers, Authorization: token } };
+  const newConfig = { ...config, headers: { ...config.headers, Authorization: `Bearer ${token}` } };
   return newConfig;
 });
 

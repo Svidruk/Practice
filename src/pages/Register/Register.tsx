@@ -6,15 +6,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useStyles } from './Register.styles';
 import { registerUser } from '../../redux/user/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RegisterUserData } from '@interfaces/RegisterUserData';
-import { useAuth } from '@hooks/useAuth';
+import { selectUser } from '@redux/user/selectors';
 
 export const Register = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
+  const currentUser = useSelector(selectUser);
 
   useEffect(() => {
     if (currentUser) navigate(Paths.root);

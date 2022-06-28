@@ -13,8 +13,8 @@ const AppRouter: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={Paths.login} element={<Login />}></Route>
-        <Route path={Paths.register} element={<Register />}></Route>
+        <Route path={Paths.login} element={<DefaultLayout isAuth children={<Login />} />}></Route>
+        <Route path={Paths.register} element={<DefaultLayout isAuth children={<Register />} />}></Route>
         <Route path={Paths.root} element={<DefaultLayout children={<Home />} />}></Route>
         <Route path={`${Paths.product}/:id`} element={<DefaultLayout children={<ProductDescription />} />}></Route>
       </Routes>

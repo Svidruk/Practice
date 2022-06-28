@@ -1,4 +1,5 @@
 import { makeStyles } from '@mui/styles';
+import { Breakpoints, ScreenWidth } from '@styles/Breakpoints';
 import Colors from '@styles/Colors';
 
 export const useStyles = makeStyles({
@@ -10,13 +11,18 @@ export const useStyles = makeStyles({
     width: '100%',
     zIndex: 2,
     background: Colors.white,
+
+    [Breakpoints.mobile]: {
+      display: 'none',
+    },
   },
   navContent: {
     display: 'flex',
     alignItems: 'center',
-    width: 1020,
+    maxWidth: ScreenWidth.desktop,
     margin: '0 auto',
     height: '100%',
+    justifyContent: 'space-between',
   },
   button: {
     width: '100%',
@@ -40,8 +46,10 @@ export const useStyles = makeStyles({
     color: '#fff',
   },
   searchBar: {
-    width: 600,
+    width: 'max-content',
+    flex: 3,
     marginLeft: 50,
+    marginRight: 30,
     background: 'rgba(239, 239, 239, 0.7)',
     borderRadius: 40,
     padding: '12px 20px',
@@ -54,11 +62,12 @@ export const useStyles = makeStyles({
     border: 'none',
     background: 'transparent',
     marginLeft: '10px',
+    display: 'block',
   },
   userOptions: {
     display: 'flex',
     alignItems: 'center',
-    marginLeft: 'auto',
+    // marginLeft: 'auto',
   },
   basket: {
     position: 'relative',
@@ -94,6 +103,7 @@ export const useStyles = makeStyles({
     borderRadius: 28,
     cursor: 'pointer',
     marginLeft: 30,
+    position: 'relative',
   },
   burger: {
     margin: '0 12px',
@@ -107,5 +117,33 @@ export const useStyles = makeStyles({
     alignItems: 'center',
     background: Colors.gray,
     color: Colors.white,
+  },
+  dropDown: {
+    position: 'absolute',
+    bottom: 0,
+    width: 100,
+    height: 100,
+    background: Colors.white,
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.04)',
+    transform: 'translate(0%,105%)',
+    borderRadius: 10,
+    right: 0,
+    display: 'flex',
+    justifyContent: 'end',
+    alignItems: 'center',
+    flexDirection: 'column',
+    padding: '10px 0',
+  },
+  logOutButton: {
+    width: '100%',
+    height: 34,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    padding: 0,
+    margin: 0,
+    color: Colors.white,
+    background: Colors.red,
   },
 });
