@@ -24,6 +24,7 @@ const Navbar: FC = () => {
   const sortInfo = useSelector((state: RootState) => state.homeReducer.sortInfo);
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const currentUser = useSelector(selectUser);
+  const userCartTotalAmount = useSelector((state: RootState) => state.homeReducer.home?.data?.userCartTotalAmount);
 
   const handleBasketOpen = useCallback(() => {
     dispatch(setIsBasketOpen());
@@ -53,7 +54,9 @@ const Navbar: FC = () => {
           {currentUser ? (
             <>
               <div className={styles.basket} onClick={handleBasketOpen}>
-                <div className={styles.numberProductsInBasket}>3</div>
+                {userCartTotalAmount !== 0 && (
+                  <div className={styles.numberProductsInBasket}>{userCartTotalAmount}</div>
+                )}
                 <Basket />
               </div>
               <div className={styles.menu} onClick={() => setIsDropDownOpen((isDropDownOpen) => !isDropDownOpen)}>

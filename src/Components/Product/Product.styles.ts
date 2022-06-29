@@ -63,7 +63,7 @@ export const useStyles = makeStyles({
     paddingTop: 18,
     paddingBottom: 10,
   },
-  soldCount: {
+  soldAmountCount: {
     color: Colors.gray,
     fontWeight: 'lighter',
     margin: 0,

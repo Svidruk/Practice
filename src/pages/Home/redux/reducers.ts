@@ -1,7 +1,7 @@
 import { DataState } from '@enums/DataState';
 import { createSlice } from '@reduxjs/toolkit';
 import { State } from './types';
-import { changeProductQuantityAction, removeProductAction } from '@pages/Basket/redux/actions';
+import { addProductAction, changeProductQuantityAction, removeProductAction } from '@pages/Basket/redux/actions';
 import { ProductData } from '@interfaces/ProductData';
 import { SortInfoData } from '@interfaces/SortInfoData';
 
@@ -12,7 +12,7 @@ const initialState: State = {
 };
 
 const getSortedData = (products: ProductData[], sortInfo: SortInfoData) => {
-  if (sortInfo.category) products = products.filter((product) => product.category === sortInfo.category);
+  if (sortInfo.category) products = products.filter((product) => product.categoryName === sortInfo.category);
   if (sortInfo.searchByText)
     products = products.filter((product) =>
       product.name.toLocaleLowerCase().startsWith(sortInfo.searchByText.toLocaleLowerCase())
@@ -31,6 +31,7 @@ export const slice = createSlice({
     setHomeDataLoading(state) {
       state.home = { data: null, state: DataState.Pending };
     },
+
     setSortInfo(state, action) {
       if (!state?.baseProducts || !state.home.data) {
         return;
@@ -55,7 +56,10 @@ export const slice = createSlice({
         data: {
           ...state.home.data,
           products: state.home.data.products.map((product) => {
-            if (product.id === payload.id) product.quantity = payload.quantity;
+            if (product.id === payload.productId)
+              payload.sign === '+'
+                ? (product.quantity = product.quantity + 1)
+                : (product.quantity = product.quantity - 1);
             return product;
           }),
         },
@@ -73,6 +77,23 @@ export const slice = createSlice({
           ...state.home.data,
           products: state.home.data.products.map((product) => {
             if (product.id === payload) product.quantity = 0;
+            return product;
+          }),
+        },
+        state: DataState.Fulfilled,
+      };
+    });
+
+    builder.addCase(addProductAction, (state, { payload }) => {
+      if (!state.home.data) {
+        return;
+      }
+      state.home.data?.products;
+      state.home = {
+        data: {
+          ...state.home.data,
+          products: state.home.data.products.map((product) => {
+            if (product.id === payload) product.quantity = 1;
             return product;
           }),
         },

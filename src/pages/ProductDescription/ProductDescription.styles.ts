@@ -20,9 +20,10 @@ export const useStyles = makeStyles({
   },
   productImage: {
     width: 540,
-    height: 'auto',
     borderRadius: 20,
     marginRight: 32,
+    height: 400,
+    objectFit: 'contain',
   },
   extraInfo: {},
   line: {
@@ -38,7 +39,7 @@ export const useStyles = makeStyles({
     color: '#313131',
     fontSize: 14,
   },
-  soldCount: {
+  soldAmountCount: {
     color: Colors.gray,
     fontWeight: 'lighter',
     margin: '12px 0',
@@ -68,18 +69,19 @@ export const useStyles = makeStyles({
   },
   imgUrl: {
     width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    height: 400,
+    objectFit: 'contain',
   },
   imagesFlex: {
     display: 'flex',
     columnGap: 10,
     maxWidth: '100%',
     margin: '32px 0',
+    height: 400,
   },
   imageFlex: {
     width: '39%',
-    objectFit: 'cover',
+    objectFit: 'contain',
   },
   imageFlexLeft: {
     width: '60%',

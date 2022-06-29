@@ -4,6 +4,6 @@ export interface ProductData {
   name: string;
   price: number;
   quantity: number;
-  sold?: number;
-  category: string;
+  soldAmount?: number;
+  categoryName: string;
 }

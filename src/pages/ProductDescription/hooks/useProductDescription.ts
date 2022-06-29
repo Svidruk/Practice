@@ -6,7 +6,7 @@ import { RootState } from '@redux/store';
 import { getProductDescriptionData } from '../redux/actions';
 import { useParams } from 'react-router-dom';
 
-export const ProductDescription = (): {
+export const useProductDescription = (): {
   productDescriptionData: AsyncData<ProductDescriptionData>;
 } => {
   const productDescriptionData = useSelector<RootState, AsyncData<ProductDescriptionData>>(

@@ -4,7 +4,7 @@ import { ReactComponent as Close } from '@assets/icons/Close.svg';
 import classNames from 'classnames';
 import { Timeout } from '@enums/Timeout';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeProductQuantityAction, removeProductAction } from '@pages/Basket/redux/actions';
+import { addProductAction, changeProductQuantityAction, removeProductAction } from '@pages/Basket/redux/actions';
 import { ProductData } from '@interfaces/ProductData';
 import { Paths } from '@enums/Paths';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ interface Props extends ProductData {
   isHomePageProduct?: boolean;
 }
 
-const Product: FC<Props> = ({ id, imgUrl, name, price, quantity, sold, category, isHomePageProduct }) => {
+const Product: FC<Props> = ({ id, imgUrl, name, price, quantity, soldAmount, isHomePageProduct }) => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const [isClickedDeleteProduct, setIsClickedDeleteProduct] = useState(false);
@@ -51,7 +51,7 @@ const Product: FC<Props> = ({ id, imgUrl, name, price, quantity, sold, category,
         <Link to={`${Paths.product}/${id}`}>
           <h4 className={styles.name}>{name}</h4>
         </Link>
-        {isHomePageProduct && <h5 className={styles.soldCount}>{sold ? sold : 0} Sold</h5>}
+        {isHomePageProduct && <h5 className={styles.soldAmountCount}>{soldAmount ? soldAmount : 0} sold</h5>}
         <div className={styles.productManipulation}>
           <b className={styles.productPrice}>${price.toFixed(2)}</b>
           {currentUser && (
@@ -63,9 +63,7 @@ const Product: FC<Props> = ({ id, imgUrl, name, price, quantity, sold, category,
                       if (quantity - 1 === 0) {
                         removeProductFromBasket();
                       } else {
-                        dispatch(
-                          changeProductQuantityAction({ id, imgUrl, name, price, category, quantity: quantity - 1 })
-                        );
+                        dispatch(changeProductQuantityAction({ productId: id, sign: '-' }));
                       }
                     }}
                     className={classNames(styles.button, styles.subButton)}
@@ -76,9 +74,13 @@ const Product: FC<Props> = ({ id, imgUrl, name, price, quantity, sold, category,
                 </>
               )}
               <button
-                onClick={() =>
-                  dispatch(changeProductQuantityAction({ id, imgUrl, name, price, category, quantity: quantity + 1 }))
-                }
+                onClick={() => {
+                  if (quantity === 0) {
+                    dispatch(addProductAction(id));
+                  } else {
+                    dispatch(changeProductQuantityAction({ productId: id, sign: '+' }));
+                  }
+                }}
                 className={classNames(styles.button, styles.addButton)}
               >
                 +

@@ -4,6 +4,7 @@ export interface ProductDescriptionData {
   name: string;
   price: number;
   quantity: number;
-  sold?: number;
-  category?: string;
+  soldAmount?: number;
+  description: string;
+  extraInformation: string;
 }

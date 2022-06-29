@@ -159,4 +159,16 @@ export const useStyles = makeStyles({
   totalBlockPrice: {
     color: Colors.cyan,
   },
+  noData: {
+    width: '100%',
+    height: '70vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 40,
+    flexDirection: 'column',
+  },
+  smile: {
+    fontSize: 120,
+  },
 });

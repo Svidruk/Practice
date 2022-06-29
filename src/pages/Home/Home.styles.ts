@@ -43,7 +43,7 @@ export const useStyles = makeStyles({
   paginationBlock: {
     position: 'absolute',
     bottom: 0,
-    height: 160,
+    height: 50,
     zIndex: 2,
     width: '100%',
     background: 'linear-gradient(360deg, #FFFFFF 42.16%, rgba(255, 255, 255, 0) 100%)',
@@ -56,7 +56,7 @@ export const useStyles = makeStyles({
     borderRadius: 50,
     background: 'rgba(168, 172, 184, 0.1)',
     padding: 10,
-    marginTop: 60,
+    marginTop: 150,
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',

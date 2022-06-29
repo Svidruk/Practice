@@ -1,6 +1,6 @@
 import { DataState } from '@enums/DataState';
 import { BasketData } from '@interfaces/BasketData';
-import { changeProductQuantity, deleteProduct, fetchBasketData } from '@api/basketApi';
+import { changeProductQuantity, deleteProduct, fetchBasketData, postProduct } from '@api/basketApi';
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import {
   getBasketData,
@@ -8,21 +8,24 @@ import {
   setBasketDataLoading,
   changeProductQuantityAction,
   removeProductAction,
+  addProductAction,
 } from './actions';
 import { RootState } from '@redux/store';
 import { ProductData } from '@interfaces/ProductData';
+import { ChangeProductData } from '@interfaces/ChangeProductData';
 
-const changeProductQuantityHelper = (productToChange: ProductData, products?: ProductData[]) => {
-  if (products && products.find((product) => product.id === productToChange.id)) {
+const changeProductQuantityHelper = (productToChange: ChangeProductData, products: ProductData[]) => {
+  if (products && products.find((product) => product.id === productToChange.productId)) {
     return products.map((product) => {
-      if (product.id === productToChange.id) product.quantity = productToChange.quantity;
+      if (product.id === productToChange.productId) {
+        productToChange.sign === '+'
+          ? (product.quantity = product.quantity + 1)
+          : (product.quantity = product.quantity - 1);
+      }
       return product;
     });
   } else {
-    if (products) {
-      return [...products, productToChange];
-    }
-    return [productToChange];
+    return products;
   }
 };
 
@@ -79,10 +82,33 @@ function* removeProductActionAsync({ payload }: ReturnType<typeof removeProductA
   }
 }
 
+function* addProductActionAsync({ payload }: ReturnType<typeof addProductAction>) {
+  try {
+    const products: ProductData[] = yield select((state: RootState) => state.homeReducer.home.data?.products);
+    const basketData: BasketData = yield select((state: RootState) => state.basketReducer.basket.data);
+    const newProduct = products.find((product) => product.id === payload);
+    if (newProduct && basketData) {
+      const setBasketDataAction = setBasketData({
+        data: {
+          ...basketData,
+          products: basketData.products.length > 0 ? [...basketData.products, newProduct] : [newProduct],
+        },
+        state: DataState.Fulfilled,
+      });
+      yield put(setBasketDataAction);
+    }
+    yield call(postProduct, payload);
+  } catch {
+    // console.log('Something went wrong while delete product from basket');
+  }
+}
+
 function* watchGetBasketData() {
   yield takeLatest(getBasketData.type, getBasketDataAsync);
   yield takeLatest(changeProductQuantityAction.type, changeProductQuantityActionAsync);
   yield takeLatest(removeProductAction.type, removeProductActionAsync);
+
+  yield takeLatest(addProductAction.type, addProductActionAsync);
 }
 
 export function* basketSaga(): Generator {
